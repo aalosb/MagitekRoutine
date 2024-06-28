@@ -16,10 +16,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.0.2
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+    - name: Install .NET Framework 4.8 Developer Pack
+      run: |
+        choco install netfx-4.8-devpack
     - name: Restore dependencies
       run:  |
         cd Magitek
@@ -48,6 +53,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./bin/Release/net6.0/Magitek.dll
-        asset_name: MyLibrary.dll
+        asset_path: ./Magitek/bin/Release/net48/Magitek.dll
+        asset_name: Magitek.dll
         asset_content_type: application/octet-stream
