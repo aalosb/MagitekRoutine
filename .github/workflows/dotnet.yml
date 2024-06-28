@@ -21,9 +21,13 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run:  |
+        cd Magitek
+        dotnet restore
     - name: Build
-      run: dotnet build --no-restore --configuration Release
+      run: |
+        cd Magitek
+        dotnet build --no-restore --configuration Release
     - name: Install GitVersion
       run: dotnet tool install --global GitVersion.Tool    
     - name: Generate Version
