@@ -21,7 +21,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 4.8
+        dotnet-version: 4.8.x
     - name: Install .NET Framework 4.8 Developer Pack
       run: |
         choco install netfx-4.8-devpack
