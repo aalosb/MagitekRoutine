@@ -25,14 +25,10 @@ jobs:
     - name: Install .NET Framework 4.8 Developer Pack
       run: |
         choco install netfx-4.8-devpack
-    - name: Restore dependencies
-      run:  |
-        cd Magitek
-        dotnet restore
     - name: Build
       run: |
         cd Magitek
-        dotnet build --no-restore --configuration Release
+        dotnet build --configuration Release
     - name: Install GitVersion
       run: dotnet tool install --global GitVersion.Tool    
     - name: Generate Version
