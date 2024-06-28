@@ -21,14 +21,14 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 4.8
     - name: Install .NET Framework 4.8 Developer Pack
       run: |
         choco install netfx-4.8-devpack
     - name: Build
       run: |
         cd Magitek
-        dotnet build --configuration Release
+        dotnet msbuild Magitek.csproj /t:build /p:Configuration=Release
     - name: Install GitVersion
       run: dotnet tool install --global GitVersion.Tool    
     - name: Generate Version
