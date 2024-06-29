@@ -229,7 +229,7 @@ public class CombatRoutineLoader : CombatRoutine
         _latestVersion = GetLatestVersion().Result;
         var latest = _latestVersion;
 
-        if (local == latest || latest == null || local.StartsWith("cg-pre-"))
+        if (local == latest || latest == null /*|| local.StartsWith("cg-pre-")*/)
         {
             LoadProduct();
             return;
