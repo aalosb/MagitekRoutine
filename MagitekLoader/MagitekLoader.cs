@@ -21,8 +21,8 @@ public class CombatRoutineLoader : CombatRoutine
     private const string ProjectName = "Magitek";
     private const string ProjectMainType = "Magitek.Magitek";
     private const string ProjectAssemblyName = "Magitek.dll";
-    private const string ZipUrl = "https://ddjx48xxp2d6i.cloudfront.net/Magitek.zip";
-    private const string VersionUrl = "https://ddjx48xxp2d6i.cloudfront.net/Version.txt";
+    private const string ZipUrl = "https://github.com/cheesegoldfish/MagitekRoutine/releases/latest/download/Magitek.zip";
+    private const string VersionUrl = "https://github.com/cheesegoldfish/MagitekRoutine/releases/latest/download/Version.txt";
     private static readonly Color LogColor = Colors.CornflowerBlue;
 
     private static readonly string ProjectAssembly = Path.Combine(Environment.CurrentDirectory, $@"Routines\{ProjectName}\{ProjectAssemblyName}");
