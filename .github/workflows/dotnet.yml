@@ -29,7 +29,7 @@ jobs:
         cd Magitek
         msbuild Magitek.sln /p:Configuration=Release
     - name: Generate Version.txt
-      run: echo $(git rev-parse HEAD) > ./Magitek/bin/release/Version.txt
+      run: echo "cg-${{ github.run_number }}" > ./Magitek/bin/release/Version.txt
 
     - name: Create Magitek.zip
       run: |
@@ -52,8 +52,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.sha }}
-        release_name: Release ${{ github.sha }}
+        tag_name: "cg-${{ github.run_number }}"
+        release_name: "cg-${{ github.run_number }}"
         draft: false
         prerelease: false
         files: ./Magitek/bin/release/Magitek.zip, ./Magitek/bin/release/Version.txt
