@@ -6,12 +6,10 @@ name: release
 on:
   push:
     branches: [ "master", "actions" ]
-  pull_request:
-    branches: [ "master" ]
 
 jobs:
-  build:
-
+  pre-release:
+    name: "Pre Release"
     runs-on: windows-latest
 
     steps:
@@ -51,7 +49,7 @@ jobs:
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        prerelease: false
+        prerelease: true
         automatic_release_tag: "cg-${{ github.run_number }}"
         files: |
           ./Magitek/bin/release/Magitek.zip
