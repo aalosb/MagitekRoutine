@@ -21,7 +21,9 @@ jobs:
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
     - name: Restore NuGet packages
-      run: nuget restore <YourSolutionName>.sln
+      run: |
+        cd Magitek
+        nuget restore Magitek.sln
     - name: Build solution
       run: |
         cd Magitek
