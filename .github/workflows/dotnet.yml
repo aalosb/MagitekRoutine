@@ -33,19 +33,19 @@ jobs:
 
     - name: Create Magitek.zip
       run: |
-        powershell Compress-Archive -Path ./bin/release/Magitek.dll, ./bin/release/Version.txt, ./MagitekLoader/MagitekLoader.cs -DestinationPath ./bin/release/Magitek.zip
+        powershell Compress-Archive -Path ./Magitek/bin/release/Magitek.dll, ./Magitek/bin/release/Version.txt, ./MagitekLoader/MagitekLoader.cs -DestinationPath ./Magitek/bin/release/Magitek.zip
 
     - name: Upload Artifacts for Release
       uses: actions/upload-artifact@v2
       with:
         name: Magitek.zip
-        path: ./bin/release/Magitek.zip
+        path: ./Magitek/bin/release/Magitek.zip
 
     - name: Upload Version.txt for Release
       uses: actions/upload-artifact@v2
       with:
         name: Version.txt
-        path: ./bin/release/Version.txt
+        path: ./Magitek/bin/release/Version.txt
 
     - name: Create GitHub Release
       uses: actions/create-release@v1
@@ -56,4 +56,4 @@ jobs:
         release_name: Release ${{ github.sha }}
         draft: false
         prerelease: false
-        files: ./bin/release/Magitek.zip, ./bin/release/Version.txt
+        files: ./Magitek/bin/release/Magitek.zip, ./Magitek/bin/release/Version.txt
