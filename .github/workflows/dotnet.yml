@@ -1,7 +1,7 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: .NET
+name: release
 
 on:
   push:
@@ -48,12 +48,11 @@ jobs:
         path: ./Magitek/bin/release/Version.txt
 
     - name: Create GitHub Release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        tag_name: "cg-${{ github.run_number }}"
-        release_name: "cg-${{ github.run_number }}"
-        draft: false
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
         prerelease: false
-        files: ./Magitek/bin/release/Magitek.zip, ./Magitek/bin/release/Version.txt
+        automatic_release_tag: "cg-${{ github.run_number }}"
+        files: |
+          ./Magitek/bin/release/Magitek.zip
+          ./Magitek/bin/release/Version.txt
