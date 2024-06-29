@@ -5,11 +5,12 @@ name: release
 
 on:
   push:
-    branches: [ "master", "actions" ]
+    tags:
+     - "v*"
 
 jobs:
-  pre-release:
-    name: "Pre Release"
+  release:
+    name: "Release"
     runs-on: windows-latest
 
     steps:
@@ -27,7 +28,7 @@ jobs:
         cd Magitek
         msbuild Magitek.sln /p:Configuration=Release
     - name: Generate Version.txt
-      run: echo "cg-${{ github.run_number }}" > ./Magitek/bin/release/Version.txt
+      run: echo "${{ github.ref_name }}" > ./Magitek/bin/release/Version.txt
 
     - name: Create Magitek.zip
       run: |
@@ -49,8 +50,7 @@ jobs:
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        prerelease: true
-        automatic_release_tag: "cg-${{ github.run_number }}"
+        prerelease: false
         files: |
           ./Magitek/bin/release/Magitek.zip
           ./Magitek/bin/release/Version.txt
